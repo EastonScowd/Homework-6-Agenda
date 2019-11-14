@@ -10,9 +10,8 @@
 
 ---
 
-### Name: Enter your name
-
-### Email: Enter your OU email
+### Name: Easton Scowden
+### Email: es686918@ohio.edu
 
 ---
 
