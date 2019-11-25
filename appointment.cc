@@ -156,3 +156,6 @@ bool operator ==(const Appointment &first, const Appointment &second){
         return false ;
     }  
 }
+string Appointment::getStandardTime(){
+    return militaryToStandard(time) ; 
+}

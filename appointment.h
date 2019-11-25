@@ -20,6 +20,7 @@ public:
         date = "N/A" ; 
     }
     Appointment(string appData) ; 
+    string getStandardTime() ; 
     int getMonth() ; 
     void setMonth(int newMonth) ; 
     int getDay() ; 
