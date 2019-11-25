@@ -19,6 +19,7 @@ public:
         title = "N/A" ; 
         date = "N/A" ; 
     }
+    Appointment(string appData) ; 
     int getMonth() ; 
     void setMonth(int newMonth) ; 
     int getDay() ; 
@@ -36,7 +37,7 @@ public:
 
     string militaryToStandard(int time); 
     int standardToMilitary(string time);
-    //bool operator ==(const Appointment &first, const Appointment &second);
+    friend bool operator ==(const Appointment &first, const Appointment &second);
 
 private:
     string title ; 

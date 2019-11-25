@@ -149,11 +149,10 @@ int Appointment::standardToMilitary(string time){
     return returnTime ; 
 }
 
-/*bool Appointment::operator ==(const Appointment &first, const Appointment &second){
+bool operator ==(const Appointment &first, const Appointment &second){
     if(first.date == second.date && first.time == second.time && first.title == second.title && first.duration == second.duration){
         return true ; 
     }else{
         return false ;
     }  
 }
-*/ 
