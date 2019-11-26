@@ -212,7 +212,7 @@ string leading(string str){
                 return output ; 
             }
             count -- ; 
-            count += " " ;
+            output += " " ;
             count ++ ; 
         }
         output += str[count] ; 
