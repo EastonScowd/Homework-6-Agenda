@@ -6,9 +6,11 @@
 
 using namespace std;
 
-string leading(string str) ;
-void nospaces(string &str) ; 
+string leading(string str) ; // a function that gets rid of spaces before and after string
+void nospaces(string &str) ; // a function that gets rid of all spaces in a string
 
+// getters and setters for all the functions
+// all are unique regarding their restrictions of what they can and can't be
 int Appointment::getDay(){
     return day ; 
 }
@@ -44,9 +46,16 @@ int Appointment::getTime(){
 }
 
 void Appointment::setTime(int newTime){
-    if(newTime >= 0 && newTime <= 2400){
+    string timeS = to_string(time) ; 
+    if(timeS.length() == 2 && (time > 0 && time < 60)){
         time = newTime ;
-    } 
+    }
+    if(timeS.length() == 3 && timeS.substr(1,2) < 60){
+        time = newTime ; 
+    }
+    if(timeS.length() == 4 && timeS.substr(2,2) < 60){
+        time = newTime ; 
+    }
 }
 
 int Appointment::getDuration(){
@@ -102,7 +111,7 @@ string Appointment::militaryToStandard(int time){
     string minutesString ;  
     string amPM ; 
     string standardT ; 
-
+// compares time to values to determine AM or PM then forms a string based off of hours minutes and amPM 
     if(time >= 1300 && time < 2360){
         hours = (time - 1200) / 100 ; 
         minutes = (time - 1200) - (hours * 100) ;
@@ -142,6 +151,7 @@ string Appointment::militaryToStandard(int time){
 }
 
 int Appointment::standardToMilitary(string time){
+    //reads the line for an A or a for AM and the opposite for PM, it then substr to find the hours/minutes and compiles a string
     string militaryT ; 
     int returnTime ; 
     nospaces(time) ; 
@@ -179,13 +189,13 @@ int Appointment::standardToMilitary(string time){
 
 bool operator ==(const Appointment &first, const Appointment &second){
     if(first.date == second.date && first.time == second.time && first.title == second.title && first.duration == second.duration){
-        return true ; 
+        return true ; // determines if functions are equal or not
     }else{
         return false ;
     }  
 }
 string Appointment::getStandardTime(){
-    return militaryToStandard(time) ; 
+    return militaryToStandard(time) ; // function that returns standard time
 }
 
 Appointment::Appointment(string appData){
@@ -194,6 +204,8 @@ Appointment::Appointment(string appData){
     int i = 0 ;
     size_t pos = 0;
     string token;
+    // reads through string until it finds a delimiter
+    // if it finds it, it will stop and assign that string to one of the values depending on what i is equal to
     while ((pos = appData.find(delimiter)) != std::string::npos) {
         token = appData.substr(0, pos);
         appData.erase(0, pos + 1);
