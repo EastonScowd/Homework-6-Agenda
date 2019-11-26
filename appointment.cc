@@ -122,7 +122,7 @@ string Appointment::militaryToStandard(int time){
 int Appointment::standardToMilitary(string time){
     string militaryT ; 
     int returnTime ; 
-    time = nospaces(time) ; 
+    nospaces(time) ; 
     if(time.length() == 6){
         if(time.substr(4) == "AM"){
             militaryT += time[0] ;  
