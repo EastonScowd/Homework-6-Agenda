@@ -6,6 +6,8 @@
 
 using namespace std;
 
+string leading(string str) ;
+
 int Appointment::getDay(){
     return day ; 
 }
@@ -161,39 +163,55 @@ string Appointment::getStandardTime(){
 }
 
 Appointment::Appointment(string appData){
+    appData += " |" ; 
+    char delimiter = '|' ; 
     int i = 0 ;
-    int j = 0 ;
-    int holder ; 
-    for(i = 0; i < 5; i++){
-        while(appData.at(j) != '|'){
-            j++ ; 
-        }
+    size_t pos = 0;
+    string token;
+    while ((pos = appData.find(delimiter)) != std::string::npos) {
+        token = appData.substr(0, pos);
+        appData.erase(0, pos + 1);
         if(i == 0){
-            title = appData.substr(0, j) ; 
-            j++ ; 
-            holder = j ; 
-        } 
+            title = token ; 
+        }
         if(i == 1){
-            year = stoi(appData.substr(holder, j)) ; 
-            j++ ; 
-            holder = j ;
+            year = stoi(token) ;
         }
         if(i == 2){
-            month = stoi(appData.substr(holder, j)) ;
-            j++ ; 
-            holder = j ;
+            month = stoi(token) ;
         }
         if(i == 3){
-            day = stoi(appData.substr(holder, j)) ;
-            j++ ; 
-            holder = j ;
+            day = stoi(token) ;
         }
         if(i == 4){
-            time = standardToMilitary(appData.substr(holder, j)) ;
-            j++ ; 
-            holder = j ;
+            time = standardToMilitary(leading(token)) ;
+        } 
+        if(i == 5){
+            duration = stoi(token) ; 
         }
+        i++ ; 
     }
-    duration = stoi(appData.substr(holder, appData.length()-1)) ; 
 }
 
+string leading(string str){
+    string output ; 
+    unsigned int endspace = str.length() ; 
+    unsigned int count = 0 ;
+    while(str[count] == ' '){
+        count ++ ; 
+    }
+    while(count < str.length()){
+        if(str[count] == ' '){
+            count ++ ; 
+            if(str[count] == ' ' || (count == endspace)){
+                return output ; 
+            }
+            count-- ;
+            output += " " ; 
+            count++ ; 
+        }
+        output += str[count] ; 
+        count ++ ; 
+    }
+    return output ; 
+}

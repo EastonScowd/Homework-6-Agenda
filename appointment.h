@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <cstdlib>
 #include <string>
+#include <cctype>
 
 
 using namespace std;
