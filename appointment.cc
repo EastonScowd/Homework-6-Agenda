@@ -51,10 +51,10 @@ void Appointment::setTime(int newTime){
     if(timeS.length() == 2 && (newTime > 0 && newTime < 60)){
         time = newTime ;
     }
-    if((timeS.length() == 3 && stoi(timeS.substr(1,2)) < 60) && (stoi(timeS.substr(0,2)) < 24 && stoi(timeS.substr(0,2) > 0))){
+    if(timeS.length() == 3 && stoi(timeS.substr(1,2)) < 60){
         time = newTime ; 
     }
-    if(timeS.length() == 4 && stoi(timeS.substr(2,2)) < 60){
+    if((timeS.length() == 4 && stoi(timeS.substr(2,2)) < 60) && stoi(timeS.substr(0,2)) < 24){
         time = newTime ; 
     }
 }
