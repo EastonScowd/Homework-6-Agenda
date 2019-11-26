@@ -196,3 +196,27 @@ Appointment::Appointment(string appData){
     }
     duration = stoi(appData.substr(holder, appData.length()-1)) ; 
 }
+
+string leading(string str){
+    string output ; 
+    unsigned int endspace == str.length() ; 
+    unsigned int count = 0 ; 
+    while(str[count] == ' '){
+        count++ ;
+
+    }
+    while(count < str.length()){
+        if(str[count] == ' '){
+            count ++ ;
+            if(str[count] == ' ' || count == endspace){
+                return output ; 
+            }
+            count -- ; 
+            count += " " ;
+            count ++ ; 
+        }
+        output += str[count] ; 
+        count ++ ; 
+    }
+    return output ; 
+}
