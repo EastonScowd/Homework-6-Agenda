@@ -124,29 +124,29 @@ int Appointment::standardToMilitary(string time){
     int returnTime ; 
     nospaces(time) ; 
     if(time.length() == 6){
-        if(time.substr(4) == "AM"){
+        if(time.substr(4, 1) == "A" || time.substr(4, 1) == "a"){
             militaryT += time[0] ;  
             militaryT += time.substr(2,2) ;
             returnTime = stoi(militaryT) ;
-        } else if(time.substr(4) == "PM"){
+        } else if(time.substr(4, 1) == "P" || time.substr(4, 1) == "p"){
             militaryT += time[0] ; 
             militaryT += time.substr(2,2) ;
             returnTime = stoi(militaryT) + 1200 ;  
         }
     }
     if(time.length() == 7){
-        if(time.substr(0,2) == "12" && time.substr(5) == "AM"){
+        if(time.substr(0,2) == "12" && (time.substr(5,1) == "A" || time.substr(5,1) == "a")){
             militaryT += time.substr(3,2) ; 
             returnTime = stoi(militaryT) ; 
-        } else if(time.substr(0,2) == "12" && time.substr(6) == "PM"){
+        } else if(time.substr(0,2) == "12" && (time.substr(6,1) == "P" || time.substr(6,1) == "p")){
             militaryT += "12" ; 
             militaryT += time.substr(3,2) ; 
             returnTime = stoi(militaryT) ;
-        } else if(time.substr(5) == "AM"){
+        } else if(time.substr(5, 1) == "A" || time.substr(5, 1) == "a"){
         militaryT += time.substr(0,2) ;  
         militaryT += time.substr(3,2) ;
         returnTime = stoi(militaryT) ;
-        } else if(time.substr(5) == "PM"){
+        } else if(time.substr(5,1) == "P" || time.substr(5,1) == "p"){
             militaryT += time.substr(0,2) ; 
             militaryT += time.substr(3,2) ;
             returnTime = stoi(militaryT) + 1200 ;  
