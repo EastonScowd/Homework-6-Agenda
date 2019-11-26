@@ -95,6 +95,9 @@ string Appointment::militaryToStandard(int time){
         standardT = to_string(hours) + ":" + minutesString +  amPM ;
     } else if (time == 2400 || time == 0){
         standardT = "12:00AM" ; 
+    } else if(time < 59 && time > 0){
+        amPM = "AM" ; 
+        standardT = "12:" + to_string(time) + amPM ; 
     } else if(time >= 100 && time < 1160){
         hours = time / 100 ; 
         minutes = time - (hours * 100) ; 
@@ -138,7 +141,7 @@ int Appointment::standardToMilitary(string time){
         if(time.substr(0,2) == "12" && (time.substr(5,1) == "A" || time.substr(5,1) == "a")){
             militaryT += time.substr(3,2) ; 
             returnTime = stoi(militaryT) ; 
-        } else if(time.substr(0,2) == "12" && (time.substr(6,1) == "P" || time.substr(6,1) == "p")){
+        } else if(time.substr(0,2) == "12" && (time.substr(5,1) == "P" || time.substr(5,1) == "p")){
             militaryT += "12" ; 
             militaryT += time.substr(3,2) ; 
             returnTime = stoi(militaryT) ;
