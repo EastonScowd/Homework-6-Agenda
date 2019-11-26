@@ -159,3 +159,40 @@ bool operator ==(const Appointment &first, const Appointment &second){
 string Appointment::getStandardTime(){
     return militaryToStandard(time) ; 
 }
+
+Appointment::Appointment(string appData){
+    int i = 0 ;
+    int j = 0 ;
+    int holder ; 
+    for(i = 0; i < 5; i++){
+        while(appData.at(j) != '|'){
+            j++ ; 
+        }
+        if(i == 0){
+            title = leading(appData.substr(0, j)) ; 
+            j++ ; 
+            temp = j ; 
+        } 
+        if(i == 1){
+            year = stoi(appData.substr(temp, j)) ; 
+            j++ ; 
+            temp = j ;
+        }
+        if(i == 2){
+            month = stoi(appData.substr(temp, j)) ;
+            j++ ; 
+            temp = j ;
+        }
+        if(i == 3){
+            day = stoi(appData.substr(temp, j)) ;
+            j++ ; 
+            temp = j ;
+        }
+        if(i == 4){
+            time = standardToMilitary(appData.substr(temp, j)) ;
+            j++ ; 
+            temp = j ;
+        }
+    }
+    duration = stoi(appData.substr(temp, appData.length()-1)) ; 
+}
