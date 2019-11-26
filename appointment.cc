@@ -67,11 +67,13 @@ void Appointment::setTitle(string newTitle){
 }
 
 string Appointment::getDate(){
-    string y = to_string(getYear()) ; 
-    string m = to_string(getMonth()) ; 
-    string d = to_string(getDay()) ;
+    return to_string(year) + "-" + to_string(month) + "-" + to_string(day) ;
+}
 
-    return y + "-" + m + "-" + d ; 
+void Appointment::setDate(int year, int month, int day){
+    setYear(year) ; 
+    setMonth(month) ; 
+    setDay(day) ; 
 }
 
 string Appointment::militaryToStandard(int time){
