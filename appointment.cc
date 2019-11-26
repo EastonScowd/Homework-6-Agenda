@@ -63,7 +63,7 @@ string Appointment::getTitle(){
 }
 
 void Appointment::setTitle(string newTitle){
-    title = newTitle ; 
+    title = leading(newTitle) ; 
 }
 
 string Appointment::getDate(){
@@ -174,22 +174,22 @@ Appointment::Appointment(string appData){
         token = appData.substr(0, pos);
         appData.erase(0, pos + 1);
         if(i == 0){
-            title = token ; 
+            title = leading(token) ; 
         }
         if(i == 1){
-            year = stoi(token) ;
+            year = stoi(leading(token)) ;
         }
         if(i == 2){
-            month = stoi(token) ;
+            month = stoi(leading(token)) ;
         }
         if(i == 3){
-            day = stoi(token) ;
+            day = stoi(leading(token)) ;
         }
         if(i == 4){
             time = standardToMilitary(leading(token)) ;
         } 
         if(i == 5){
-            duration = stoi(token) ; 
+            duration = stoi(leading(token)) ; 
         }
         i++ ; 
     }
