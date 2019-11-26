@@ -47,14 +47,14 @@ int Appointment::getTime(){
 
 void Appointment::setTime(int newTime){
     //  makes sure it is a valid time
-    string timeS = to_string(time) ; 
-    if(timeS.length() == 2 && (time > 0 && time < 60)){
+    string timeS = to_string(newTime) ; 
+    if(timeS.length() == 2 && (newTime > 0 && newTime < 60)){
         time = newTime ;
     }
-    if(timeS.length() == 3 && timeS.substr(1,2) < 60){
+    if(timeS.length() == 3 && stoi(timeS.substr(1,2)) < 60){
         time = newTime ; 
     }
-    if(timeS.length() == 4 && timeS.substr(2,2) < 60){
+    if(timeS.length() == 4 && stoi(timeS.substr(2,2)) < 60){
         time = newTime ; 
     }
 }
