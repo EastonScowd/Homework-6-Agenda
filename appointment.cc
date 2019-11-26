@@ -68,7 +68,26 @@ void Appointment::setTitle(string newTitle){
 }
 
 string Appointment::getDate(){
-    return to_string(year) + "-" + to_string(month) + "-" + to_string(day) ;
+    string date ;
+    string year1 = to_string(year) ;
+    string month1 ;
+    string day1 ;
+
+    if(month < 10){
+        month1 = "0" + to_string(month) ; 
+    } else {
+        month1 = to_string(month) ; 
+    }
+
+    if(day < 10){
+        day1 = "0" + to_string(day) ; 
+    } else {
+        day1 = to_string(day) ; 
+    }
+
+    date = year1 + "-" + month1 + "-" + day1 ; 
+
+    return date ;
 }
 
 void Appointment::setDate(int year, int month, int day){
