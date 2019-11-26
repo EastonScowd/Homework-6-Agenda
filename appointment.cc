@@ -7,6 +7,7 @@
 using namespace std;
 
 string leading(string str) ;
+void nospaces(string &str) ; 
 
 int Appointment::getDay(){
     return day ; 
@@ -121,30 +122,31 @@ string Appointment::militaryToStandard(int time){
 int Appointment::standardToMilitary(string time){
     string militaryT ; 
     int returnTime ; 
-    if(time.length() == 7){
-        if(time.substr(5) == "AM"){
+    time = nospaces(time) ; 
+    if(time.length() == 6){
+        if(time.substr(4) == "AM"){
             militaryT += time[0] ;  
             militaryT += time.substr(2,2) ;
             returnTime = stoi(militaryT) ;
-        } else if(time.substr(5) == "PM"){
+        } else if(time.substr(4) == "PM"){
             militaryT += time[0] ; 
             militaryT += time.substr(2,2) ;
             returnTime = stoi(militaryT) + 1200 ;  
         }
     }
-    if(time.length() == 8){
-        if(time.substr(0,2) == "12" && time.substr(6) == "AM"){
+    if(time.length() == 7){
+        if(time.substr(0,2) == "12" && time.substr(5) == "AM"){
             militaryT += time.substr(3,2) ; 
             returnTime = stoi(militaryT) ; 
         } else if(time.substr(0,2) == "12" && time.substr(6) == "PM"){
             militaryT += "12" ; 
             militaryT += time.substr(3,2) ; 
             returnTime = stoi(militaryT) ;
-        } else if(time.substr(6) == "AM"){
+        } else if(time.substr(5) == "AM"){
         militaryT += time.substr(0,2) ;  
         militaryT += time.substr(3,2) ;
         returnTime = stoi(militaryT) ;
-        } else if(time.substr(6) == "PM"){
+        } else if(time.substr(5) == "PM"){
             militaryT += time.substr(0,2) ; 
             militaryT += time.substr(3,2) ;
             returnTime = stoi(militaryT) + 1200 ;  
@@ -216,4 +218,14 @@ string leading(string str){
         count ++ ; 
     }
     return output ; 
+}
+
+void nospaces(string &str){
+    string temp ;
+    for(size_t i = 0; i < str.length(); i++){
+        if(str.at(i) != ' '){
+            temp += str.at(i) ; 
+        }
+    }
+    str = temp ;
 }
