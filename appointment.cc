@@ -46,6 +46,7 @@ int Appointment::getTime(){
 }
 
 void Appointment::setTime(int newTime){
+    //  makes sure it is a valid time
     string timeS = to_string(time) ; 
     if(timeS.length() == 2 && (time > 0 && time < 60)){
         time = newTime ;
@@ -155,6 +156,7 @@ int Appointment::standardToMilitary(string time){
     string militaryT ; 
     int returnTime ; 
     nospaces(time) ; 
+    // this section is for times with single digit hours
     if(time.length() == 6){
         if(time.substr(4, 1) == "A" || time.substr(4, 1) == "a"){
             militaryT += time[0] ;  
@@ -166,6 +168,7 @@ int Appointment::standardToMilitary(string time){
             returnTime = stoi(militaryT) + 1200 ;  
         }
     }
+    // this section is for times with double digit hours 
     if(time.length() == 7){
         if(time.substr(0,2) == "12" && (time.substr(5,1) == "A" || time.substr(5,1) == "a")){
             militaryT += time.substr(3,2) ; 
