@@ -39,7 +39,7 @@ public:
     string militaryToStandard(int time); 
     int standardToMilitary(string time);
     friend bool operator ==(const Appointment &first, const Appointment &second);
-    friend string leading(string str) ; 
+    
 
 private:
     string title ; 
