@@ -169,30 +169,30 @@ Appointment::Appointment(string appData){
             j++ ; 
         }
         if(i == 0){
-            title = leading(appData.substr(0, j)) ; 
+            title = appData.substr(0, j) ; 
             j++ ; 
-            temp = j ; 
+            holder = j ; 
         } 
         if(i == 1){
-            year = stoi(appData.substr(temp, j)) ; 
+            year = stoi(appData.substr(holder, j)) ; 
             j++ ; 
-            temp = j ;
+            holder = j ;
         }
         if(i == 2){
-            month = stoi(appData.substr(temp, j)) ;
+            month = stoi(appData.substr(holder, j)) ;
             j++ ; 
-            temp = j ;
+            holder = j ;
         }
         if(i == 3){
-            day = stoi(appData.substr(temp, j)) ;
+            day = stoi(appData.substr(holder, j)) ;
             j++ ; 
-            temp = j ;
+            holder = j ;
         }
         if(i == 4){
-            time = standardToMilitary(appData.substr(temp, j)) ;
+            time = standardToMilitary(appData.substr(holder, j)) ;
             j++ ; 
-            temp = j ;
+            holder = j ;
         }
     }
-    duration = stoi(appData.substr(temp, appData.length()-1)) ; 
+    duration = stoi(appData.substr(holder, appData.length()-1)) ; 
 }
