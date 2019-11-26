@@ -169,7 +169,7 @@ Appointment::Appointment(string appData){
             j++ ; 
         }
         if(i == 0){
-            title = appData.substr(0, j) ; 
+            title = leading(appData.substr(0, j)) ; 
             j++ ; 
             holder = j ; 
         } 
