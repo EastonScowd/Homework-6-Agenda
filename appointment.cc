@@ -88,28 +88,28 @@ string Appointment::militaryToStandard(int time){
         hours = (time - 1200) / 100 ; 
         minutes = (time - 1200) - (hours * 100) ;
         minutesString = to_string(minutes) ;  
-        amPM = " PM" ; 
+        amPM = "PM" ; 
         if(minutes < 10){
             minutesString = "0" + to_string(minutes) ; 
         }
         standardT = to_string(hours) + ":" + minutesString +  amPM ;
     } else if (time == 2400 || time == 0){
-        standardT = "12:00 AM" ; 
+        standardT = "12:00AM" ; 
     } else if(time >= 100 && time < 1160){
         hours = time / 100 ; 
         minutes = time - (hours * 100) ; 
-        amPM = " AM" ;
+        amPM = "AM" ;
         minutesString = to_string(minutes) ; 
         if(minutes < 10){
             minutesString = "0" + to_string(minutes) ; 
         }
         standardT = to_string(hours) + ":" + minutesString +  amPM ;
     } else if(time == 1200){
-        standardT = "12:00 PM" ; 
+        standardT = "12:00PM" ; 
     } else if(time > 1200 && time < 1260) {
         hours = time / 100 ; 
         minutes = time - (hours * 100) ; 
-        amPM = " PM" ;
+        amPM = "PM" ;
         minutesString = to_string(minutes) ; 
         if(minutes < 10){
             minutesString = "0" + to_string(minutes) ; 
